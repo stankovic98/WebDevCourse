@@ -1,15 +1,16 @@
 
 function main(){
 	
-	var trajanjeIgre = 5000;
-	var respawnItema = 1000;
-	var trajanjeItema = 2000;
+	var trajanjeIgre = 5 * 1000;
+	var respawnItema = 1 * 1000;
+	var trajanjeItema = 2 * 1000;
+	var counter = 0;
 	
 	
 	var igra = setInterval(makeNewObject, respawnItema);
 	setTimeout(prekiniIgru, trajanjeIgre, igra);
 	
-
+	
 	
 	
 	function makeNewObject() {
@@ -18,7 +19,13 @@ function main(){
 		item.className = "shape";
 		document.body.appendChild(item);
 		
+		item.onclick = function() {
 		
+		counter++;
+		this.style.display = "none";
+
+		
+	}
 
 		var div = item.style;
 		
@@ -81,7 +88,7 @@ function main(){
 	
 	function prekiniIgru(interval) {
 		clearInterval(interval);
-		alert("Game Over");
+		alert("Game Over, Vas rezultat je: " + counter);
 	}
 }
 
