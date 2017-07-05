@@ -6,16 +6,25 @@ function main(){
 	var trajanjeItema = 2 * 1000;
 	var counter = 0;
 	var vrijeme = trajanjeIgre / 1000;
+	var igraTraje = true;
 	
 	var igra = setInterval(makeNewObject, respawnItema);
 	setTimeout(prekiniIgru, trajanjeIgre, igra);
 	
 	
+	setTimeout(prekidTimera, trajanjeIgre);
 	
-	setInterval(updateTime, 1000);
-	function updateTime() {
-		vrijeme--;
-		document.getElementById("t").innerHTML = vrijeme;
+	function prekidTimera() {
+		document.getElementById("t").innerHTML = 0;
+		igraTraje = false;
+	}
+	var int2 = setInterval(updateTime, 1000, int2);
+	function updateTime(interval) {
+		if(igraTraje) {
+			vrijeme--;
+			document.getElementById("t").innerHTML = vrijeme;
+			
+		}
 	}
 	
 	
@@ -76,6 +85,7 @@ function main(){
 		function destroyObject() {
 			div.display = "none";
 		}
+	
 		setTimeout(destroyObject, trajanjeItema)
 	}
 	
@@ -94,7 +104,9 @@ function main(){
 	
 	function prekiniIgru(interval) {
 		clearInterval(interval);
-		alert("Game Over, Vas rezultat je: " + counter);
+		document.getElementById("gameOver").style.display = "block";
+		document.getElementById("bodovi").innerHTML = counter;
+		
 	}
 }
 

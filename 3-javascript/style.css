@@ -13,10 +13,12 @@
 #nav {
 	background-color: #33ccff;
 	font-family: sans-serif;
-	font-size: 17px;
+	font-size: 23px;
 	border: 1px solid black;
 	text-align: center;
 	margin-bottom: 10px;
+	text-decoration: bold;
+	color: #804000
 }
 #counter {
 	float: left;
@@ -25,4 +27,27 @@
 #time {
 	text-align: right;
 	margin-right: 10px;
+}
+.center {
+	
+	margin: auto;
+    width: 50%;
+    border: 1px solid black;
+    padding: 10px;
+	
+}
+#gameOver {
+	z-index: 10;
+	display: none;
+	background-color:#804000;
+	text-align: center;
+	position: relative;
+	top: 140px;
+	color: #33ccff;
+	font-size: 30px;
+}
+#gameOver h2 {
+	font-size: 250%;
+	margin: 15px;
+	font-family: sans-serif;
 }
