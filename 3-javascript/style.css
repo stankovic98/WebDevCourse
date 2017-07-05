@@ -1,0 +1,28 @@
+.shape {
+	width:100px;
+	height: 100px;
+ 	background-color: red;
+ 	position: relative;
+ 	position: absolute;
+ 	top: 0;
+ 	left: 0;
+ 	display: none;
+ 	border-radius: 0px;
+  
+}
+#nav {
+	background-color: #33ccff;
+	font-family: sans-serif;
+	font-size: 17px;
+	border: 1px solid black;
+	text-align: center;
+	margin-bottom: 10px;
+}
+#counter {
+	float: left;
+	margin-left: 10px;
+}
+#time {
+	text-align: right;
+	margin-right: 10px;
+}

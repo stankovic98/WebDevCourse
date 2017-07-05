@@ -5,12 +5,18 @@ function main(){
 	var respawnItema = 1 * 1000;
 	var trajanjeItema = 2 * 1000;
 	var counter = 0;
-	
+	var vrijeme = trajanjeIgre / 1000;
 	
 	var igra = setInterval(makeNewObject, respawnItema);
 	setTimeout(prekiniIgru, trajanjeIgre, igra);
 	
 	
+	
+	setInterval(updateTime, 1000);
+	function updateTime() {
+		vrijeme--;
+		document.getElementById("t").innerHTML = vrijeme;
+	}
 	
 	
 	function makeNewObject() {
@@ -23,7 +29,7 @@ function main(){
 		
 		counter++;
 		this.style.display = "none";
-
+		document.getElementById("i").innerHTML = counter;
 		
 	}
 
@@ -32,7 +38,7 @@ function main(){
 		div.borderRadius = 0;
 		
 		var pos_X = Math.floor(Math.random() *700)+1;
-		var pos_Y = Math.floor(Math.random() *300)+1;
+		var pos_Y = Math.floor(Math.random() *300)+100;
 		
 		var color = getRandomColor();
 		
