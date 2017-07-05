@@ -52,9 +52,15 @@ textarea {
 	border-color: gray;
 }
 .panel {
-	float: right;
+	float: left;
 	width: 50%;
+	left-border: none;
 }
 iframe {
 	border: none;
 }
+.hidden {
+	display: none;
+}
+
+
