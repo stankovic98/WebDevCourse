@@ -13,5 +13,8 @@ function main() {
 		$( this ).removeClass("highlightedButton" );
 	});
 	
+	$("textarea").height($(window).height() - $("#header").height() -15);
+	$(".panel").width( ($(window).width() / 2 ) - 10);
 	
+	$("iframe").contents().find("html").html($("#htmlPanel").val());
 }
