@@ -1,8 +1,13 @@
 
 function main(){
 	
-	setInterval(makeNewObject, 1000);
-
+	var trajanjeIgre = 15000;
+	var respawnItema = 1000;
+	var trajanjeItema = 2000;
+	
+	
+	setInterval(makeNewObject, respawnItema);
+	//makeNewObject();
 	
 
 	
@@ -55,6 +60,10 @@ function main(){
 		div.display = "block";
 		div.backgroundColor = color;
 		
+		function destroyObject() {
+			div.display = "none";
+		}
+		setTimeout(destroyObject, trajanjeItema)
 	}
 	
 	function getRandomColor() {
