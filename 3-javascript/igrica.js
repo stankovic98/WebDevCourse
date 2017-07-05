@@ -1,27 +1,21 @@
 
 function main(){
-	var now = new Date();
-	var player = document.getElementById("player");
-	var time = document.getElementById("timer");
 	
-	setTimeout(reappear, 3000);
+	setInterval(makeNewObject, 1000);
+
 	
-	player.onclick = function() {
-		player.style.display = "none";
-		var afterClick = new Date();
-		var timePassed = (afterClick - now)/1000;
-		time.innerHTML = timePassed.toString() + "s";
-		
-		var ran = Math.floor(Math.random()*2000);
-		setTimeout(reappear, ran);
-	}
 
 	
 	
-	function reappear() {
+	function makeNewObject() {
+		
+		var item = document.createElement("div");
+		item.className = "shape";
+		document.body.appendChild(item);
 		
 		
-		var div = document.getElementById("player").style;
+
+		var div = item.style;
 		
 		div.borderRadius = 0;
 		
