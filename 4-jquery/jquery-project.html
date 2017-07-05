@@ -33,9 +33,9 @@
 		
 		<div id="bodyConteiner">
 			
-			<textarea id="htmlPanel" class="panel">Helo world</textarea>
+			<textarea id="htmlPanel" class="panel"><p id="par">Helo world</p></textarea>
 			<textarea id="cssPanel" class="hidden panel">p {color: red;}</textarea>
-			<textarea id="javascriptPanel" class="hidden panel">alert("hi");</textarea>
+			<textarea id="javascriptPanel" class="hidden panel">alert(document.getElementById("par").innerHTML);</textarea>
 			
 			<iframe id="outputPanel" class="panel"></iframe>
 			

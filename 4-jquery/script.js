@@ -3,6 +3,7 @@ function main() {
 	function updateOutput() {
 		$("iframe").contents().find("html").html("<html><head><style>" + $("#cssPanel").val() 
 		+ "</style></head><body>" + $("#htmlPanel").val() + "</body></html>");
+		document.getElementById("outputPanel").contentWindow.eval($("#javascriptPanel").val());
 	}
 	
 	
@@ -30,12 +31,10 @@ function main() {
 	
 	updateOutput();
 	
-	$("#htmlPanel").on("change keyup paste", function() {
+	$("textarea").on("change keyup paste", function() {
 		updateOutput();
 	});
-	$("#cssPanel").on("change keyup paste", function() {
-		updateOutput();
-	});
+	
 	
 	
 }
