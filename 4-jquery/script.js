@@ -1,5 +1,11 @@
 function main() {
 	
+	function updateOutput() {
+		$("iframe").contents().find("html").html("<html><head><style>" + $("#cssPanel").val() 
+		+ "</style></head><body>" + $("#htmlPanel").val() + "</body></html>");
+	}
+	
+	
 	$( ".toggleButton" ).hover(function() {
 			$( this ).addClass("highlightedButton" );
 		} ,
@@ -21,12 +27,14 @@ function main() {
 	});
 	
 	$("textarea").height($(window).height() - $("#header").height() -15);
-	//$(".panel").width( ($(window).width() / 2 ) - 10);
 	
-	$("iframe").contents().find("html").html($("#htmlPanel").val());
+	updateOutput();
 	
 	$("#htmlPanel").on("change keyup paste", function() {
-		$("iframe").contents().find("html").html($("#htmlPanel").val());
+		updateOutput();
+	});
+	$("#cssPanel").on("change keyup paste", function() {
+		updateOutput();
 	});
 	
 	
