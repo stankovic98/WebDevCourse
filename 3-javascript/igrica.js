@@ -1,13 +1,13 @@
 
 function main(){
 	
-	var trajanjeIgre = 15000;
+	var trajanjeIgre = 5000;
 	var respawnItema = 1000;
 	var trajanjeItema = 2000;
 	
 	
-	setInterval(makeNewObject, respawnItema);
-	//makeNewObject();
+	var igra = setInterval(makeNewObject, respawnItema);
+	setTimeout(prekiniIgru, trajanjeIgre, igra);
 	
 
 	
@@ -77,6 +77,11 @@ function main(){
 	
 	function randomStranica() {
 		return Math.floor(Math.random()*200)+100;
+	}
+	
+	function prekiniIgru(interval) {
+		clearInterval(interval);
+		alert("Game Over");
 	}
 }
 
