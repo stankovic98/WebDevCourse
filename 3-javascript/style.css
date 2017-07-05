@@ -39,7 +39,7 @@
 #gameOver {
 	z-index: 10;
 	display: none;
-	background-color:#804000;
+	background-color:#33334d;
 	text-align: center;
 	position: relative;
 	top: 140px;
@@ -50,4 +50,21 @@
 	font-size: 250%;
 	margin: 15px;
 	font-family: sans-serif;
+}
+#button {
+	width: 50%;
+	height: 40px;
+	border-radius: 12px;
+	background-color: #33ccff;
+	border: none;
+	margin: 5px;
+}
+#button:hover {
+	opacity: 0.6;
+}
+#bodovi {
+	
+	background-color: #b3b3cc;
+	color: #804000;
+	opacity: 0.9;
 }

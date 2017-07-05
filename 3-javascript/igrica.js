@@ -27,7 +27,9 @@ function main(){
 		}
 	}
 	
-	
+	document.getElementById("button").onclick = function() {
+		location.reload();
+	}
 	function makeNewObject() {
 		
 		var item = document.createElement("div");
