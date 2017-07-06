@@ -1,7 +1,7 @@
 
 function main(){
 	
-	
+	$("#pocetna").addClass("hidden");
 	
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 1 * 1000;
