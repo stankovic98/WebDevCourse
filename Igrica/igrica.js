@@ -1,6 +1,8 @@
 
 function main(){
 	
+	
+	
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 1 * 1000;
 	var trajanjeItema = 2 * 1000;
