@@ -17,38 +17,37 @@ function main(){
 	setTimeout(prekidTimera, trajanjeIgre);
 	
 	function prekidTimera() {
-		document.getElementById("t").innerHTML = 0;
+		$("#t").html("0"); 
 		igraTraje = false;
 	}
 	var int2 = setInterval(updateTime, 1000, int2);
 	function updateTime(interval) {
 		if(igraTraje) {
 			vrijeme--;
-			document.getElementById("t").innerHTML = vrijeme;
+			$("#t").html(vrijeme);
 			
 		}
 	}
 	
-	document.getElementById("button").onclick = function() {
+	$("#button").click(function() {
 		location.reload();
-	}
+	});
+	
 	function makeNewObject() {
 		
-		var item = document.createElement("div");
-		item.className = "shape";
-		document.body.appendChild(item);
+		var item = $("body").append("<div class='shape'></div>");
 		
-		item.onclick = function() {
+		$(item).click(function() {
+			counter++;
+			$(this).css("display", "none");
+			$("#i").html(counter);
+		});
 		
-		counter++;
-		this.style.display = "none";
-		document.getElementById("i").innerHTML = counter;
 		
-	}
 
-		var div = item.style;
+		item.css("borderRadius", "0");
 		
-		div.borderRadius = 0;
+		/*
 		
 		var pos_X = Math.floor(Math.random() *700)+1;
 		var pos_Y = Math.floor(Math.random() *300)+100;
@@ -85,6 +84,8 @@ function main(){
 		now = new Date();
 		div.display = "block";
 		div.backgroundColor = color;
+		*/
+		item.css("display", "block");
 		
 		function destroyObject() {
 			div.display = "none";
@@ -108,8 +109,8 @@ function main(){
 	
 	function prekiniIgru(interval) {
 		clearInterval(interval);
-		document.getElementById("gameOver").style.display = "block";
-		document.getElementById("bodovi").innerHTML = counter;
+		$("#gameOver").css("display","block");
+		$("#bodovi").html(counter);
 		
 	}
 }
