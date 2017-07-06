@@ -27,3 +27,13 @@ body {
 .form-inline {
 	padding: 10px;
 }
+#igra {
+	display: none;
+}
+#igra button {
+	width: 10%;
+	margin:0 5px 0 5px;
+}
+.progress {
+	width: 80%;
+}

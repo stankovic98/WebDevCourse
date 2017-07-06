@@ -4,13 +4,14 @@ function main(){
 	var user = $("#name").val()
 	$("#playerName").css( "left", $(window).width() / 2);
 	$("#playerName").html(user);
-	$("#nav").toggle();
+	$("#igra").toggle();
 	
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 1 * 1000;
 	var trajanjeItema = 2 * 1000;
 	var counter = 0;
-	var vrijeme = trajanjeIgre / 1000;
+	var trajanjeIgreSEC = trajanjeIgre / 1000;
+	var vrijeme = trajanjeIgreSEC;
 	var igraTraje = true;
 	
 	var igra = setInterval(makeNewObject, respawnItema);
@@ -21,14 +22,15 @@ function main(){
 	setTimeout(prekidTimera, trajanjeIgre);
 	
 	function prekidTimera() {
-		$("#t").html("0"); 
+		$(".progress-bar").css("width", "0");
 		igraTraje = false;
 	}
 	var int2 = setInterval(updateTime, 1000, int2);
 	function updateTime(interval) {
 		if(igraTraje) {
 			vrijeme--;
-			$("#t").html(vrijeme);
+			var postotak = Math.floor(( vrijeme/trajanjeIgreSEC*100)) + "%";
+			$(".progress-bar").css("width", postotak);
 			
 		}
 	}
