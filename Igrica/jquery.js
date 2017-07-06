@@ -1,6 +1,9 @@
 function main(){
 	
 	$("#pocetna").hide();
+	var user = $("#name").val()
+	$("#playerName").css( "left", $(window).width() / 2);
+	$("#playerName").html(user);
 	
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 1 * 1000;
@@ -11,6 +14,8 @@ function main(){
 	
 	var igra = setInterval(makeNewObject, respawnItema);
 	setTimeout(prekiniIgru, trajanjeIgre, igra);
+	
+	
 	
 	setTimeout(prekidTimera, trajanjeIgre);
 	
@@ -43,17 +48,9 @@ function main(){
 			$("#i").html(counter);
 		});
 			
-		var pos_X = Math.floor(Math.random() * $(window).width()) -item.width();
-		var pos_Y = Math.floor(Math.random() *$(window).height()) - item.height();
 		
-		var color = getRandomColor();
 		
-		item.css({
-			top: pos_Y, 
-			left: pos_X
-		});
 		
-		item.css("background-color", color);
 		
 		var shape = Math.floor(Math.random() *3);
 		
@@ -78,6 +75,16 @@ function main(){
 				break;
 		}
 		
+		var pos_X = Math.floor(Math.random() * ($(window).width()-40));
+		var pos_Y = Math.floor(Math.random() * ($(window).height()+40));
+		
+		var color = getRandomColor();
+		item.css("background-color", color);
+		
+		item.css({
+			top: pos_Y, 
+			left: pos_X
+		});
 		function destroyObject() {
 			item.hide();
 		}
