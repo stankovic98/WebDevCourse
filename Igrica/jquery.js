@@ -33,26 +33,27 @@ function main(){
 	
 	function makeNewObject() {
 		
-		var item = $("body").append("<div class='shape'></div>");
-		$(".shape").css("display", "block");
 		
-		$(".shape").click(function() {
+		var item = $( "<div class='shape'></div>" ).appendTo( "body" );
+		item.css("display", "block");
+		
+		item.click(function() {
 			counter++;
-			$(".shape").css("display", "none");
+			item.css("display", "none");
 			$("#i").html(counter);
 		});
 			
-		var pos_X = Math.floor(Math.random() *700)+1;
-		var pos_Y = Math.floor(Math.random() *300)+100;
+		var pos_X = Math.floor(Math.random() * $(window).width()) -item.width();
+		var pos_Y = Math.floor(Math.random() *$(window).height()) - item.height();
 		
 		var color = getRandomColor();
 		
-		$(".shape").css({
+		item.css({
 			top: pos_Y, 
 			left: pos_X
 		});
 		
-		$(".shape").css("background-color", color);
+		item.css("background-color", color);
 		
 		var shape = Math.floor(Math.random() *3);
 		
@@ -60,23 +61,28 @@ function main(){
 		{
 			case 0:
 				var a = randomStranica();
-				$(".shape").height(a);
-				$(".shape").width(a);
+				item.height(a);
+				item.width(a);
 				break;
 			case 1:
 				var a = randomStranica();
 				var b = randomStranica();
-				$(".shape").height(a);
-				$(".shape").width(b);
+				item.height(a);
+				item.width(b);
 				break;
 			case 2:
 				var a = randomStranica();
-				$(".shape").height(a);
-				$(".shape").width(a);
-				$(".shape").css("border-radius", "50%");
+				item.height(a);
+				item.width(a);
+				item.css("border-radius", "50%");
 				break;
 		}
 		
+		function destroyObject() {
+			item.hide();
+		}
+	
+		setTimeout(destroyObject, trajanjeItema)
 	
 	}
 	

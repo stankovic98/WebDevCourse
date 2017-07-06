@@ -5,7 +5,7 @@ function main(){
 	
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 1 * 1000;
-	var trajanjeItema = 2 * 1000;
+	var trajanjeItema = 4 * 1000;
 	var counter = 0;
 	var vrijeme = trajanjeIgre / 1000;
 	var igraTraje = true;
