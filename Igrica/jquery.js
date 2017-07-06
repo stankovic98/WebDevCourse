@@ -4,6 +4,7 @@ function main(){
 	var user = $("#name").val()
 	$("#playerName").css( "left", $(window).width() / 2);
 	$("#playerName").html(user);
+	$("#nav").toggle();
 	
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 1 * 1000;
