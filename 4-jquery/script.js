@@ -7,7 +7,8 @@ function main() {
 	}
 	
 	
-	$( ".toggleButton" ).hover(function() {
+	$( ".toggleButton" ).hover(
+		function() {
 			$( this ).addClass("highlightedButton" );
 		} ,
 		function() {
@@ -23,7 +24,6 @@ function main() {
 		$("#" + panelId).toggleClass("hidden");
 		var numberOfActivePanels = 4 - $(".hidden").length;
 		$(".panel").width( ($(window).width() / numberOfActivePanels ) - 10);
-		console.log($(".panel").width());
 		
 	});
 	

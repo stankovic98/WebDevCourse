@@ -52,7 +52,7 @@ textarea {
 	border-color: gray;
 }
 .panel {
-	float: left;
+	float: left	;
 	width: 50%;
 	left-border: none;
 }
