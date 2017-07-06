@@ -1,17 +1,29 @@
 .jumbotron {
-	
-	background-image: url("background.jpg");
+	background-image: url("bg1.jpg");
 	background-size: 100%;
-	color: white;
-	padding: 80px;
-
-}
-.jumbotron p {
-	color: black;
-	font-size: 180%;
-	font-weight: bold;
+	margin-top: 50px;
 }
 
-body {
+#appSumary {
 	
+	text-align: center;
+	margin-bottom: 80px;
+}
+#appSumary h1 {
+	display: block;
+}
+.card-img-top {
+	width: 100%;
+}
+#appstore {
+	width: 200px;
+}
+#footer {
+	text-align: center;
+	padding-top: 50px;
+	margin-top: 50px;
+	padding-bottom: 90px;
+}
+body {
+	position: relative;
 }
