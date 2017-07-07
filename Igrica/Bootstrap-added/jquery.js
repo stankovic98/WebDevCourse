@@ -2,9 +2,10 @@ function main(){
 	
 	$("#pocetna").hide();
 	var user = $("#name").val()
-	$("#playerName").css( "left", $(window).width() / 2);
 	$("#playerName").html(user);
 	$("#igra").toggle();
+	$(".progress-bar").width("100%");
+	var originalWidth = $(".progress-bar").width();
 	
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 1 * 1000;
@@ -28,27 +29,32 @@ function main(){
 	var int2 = setInterval(updateTime, 1000, int2);
 	function updateTime(interval) {
 		if(igraTraje) {
+			
+
+			
 			vrijeme--;
-			var postotak = Math.floor(( vrijeme/trajanjeIgreSEC*100)) + "%";
-			$(".progress-bar").css("width", postotak);
+			var postotak = Math.floor(( vrijeme/trajanjeIgreSEC*100));
+			progressBar(postotak, $('.progress-bar'), originalWidth);
+			
+			
 			
 		}
 	}
 	
-	$("#button").click(function() {
+	$("#restart").click(function() {
 		location.reload();
 	});
 	
 	function makeNewObject() {
 		
 		
-		var item = $( "<div class='shape'></div>" ).appendTo( "body" );
+		var item = $( "<div class='shape'></div>" ).appendTo( "#room" );
 		item.css("display", "block");
 		
 		item.click(function() {
 			counter++;
 			item.css("display", "none");
-			$("#i").html(counter);
+			$("#bodovi").html(counter);
 		});
 			
 		
@@ -63,23 +69,26 @@ function main(){
 				var a = randomStranica();
 				item.height(a);
 				item.width(a);
+				item.addClass("animation-target1");
 				break;
 			case 1:
 				var a = randomStranica();
 				var b = randomStranica();
 				item.height(a);
 				item.width(b);
+				item.addClass("animation-target2");
 				break;
 			case 2:
 				var a = randomStranica();
 				item.height(a);
 				item.width(a);
 				item.css("border-radius", "50%");
+				item.addClass("animation-target3");
 				break;
 		}
 		
-		var pos_X = Math.floor(Math.random() * ($(window).width()-40));
-		var pos_Y = Math.floor(Math.random() * ($(window).height()+40));
+		var pos_X = Math.floor(Math.random() * $("#room").width()-60);
+		var pos_Y = Math.floor(Math.random() * $("#room").height()-65);
 		
 		var color = getRandomColor();
 		item.css("background-color", color);
@@ -98,11 +107,16 @@ function main(){
 	
 	function prekiniIgru(interval) {
 		clearInterval(interval);
-		$("#gameOver").css("display","block");
-		$("#bodovi").html(counter);
+		$("#modal").modal("show");
+		$("#score").html(counter);
 		
 	}
 	
+	function progressBar(percent, $element,originalWidth) {
+		
+		var progressBarWidth = percent * originalWidth / 100;
+		$element.animate({ width: progressBarWidth }, 500);
+	}
 	
 	function getRandomColor() {
 	  var letters = '0123456789ABCDEF';
@@ -114,6 +128,6 @@ function main(){
 	}
 	
 	function randomStranica() {
-		return Math.floor(Math.random()*200)+100;
+		return Math.floor(Math.random()*200)+10;
 	}
 }
