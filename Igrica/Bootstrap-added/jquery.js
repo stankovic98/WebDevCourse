@@ -7,13 +7,15 @@ function main(){
 	$(".progress-bar").width("100%");
 	var originalWidth = $(".progress-bar").width();
 	
-	var trajanjeIgre = 5 * 1000;
-	var respawnItema = 1 * 1000;
+	var trajanjeIgre = 20 * 1000;
+	var respawnItema = 0.5 * 1000;
 	var trajanjeItema = 2 * 1000;
 	var counter = 0;
 	var trajanjeIgreSEC = trajanjeIgre / 1000;
 	var vrijeme = trajanjeIgreSEC;
 	var igraTraje = true;
+	var postotakPomicanjaItem = 0.11; //brojevi od 0 do 1
+	var postotakMinusBodovi = 0.22;
 	
 	var igra = setInterval(makeNewObject, respawnItema);
 	setTimeout(prekiniIgru, trajanjeIgre, igra);
@@ -47,14 +49,28 @@ function main(){
 	
 	function makeNewObject() {
 		
+		var animirano = false;
 		
 		var item = $( "<div class='shape'></div>" ).appendTo( "#room" );
+		var minusBodovi = false;
 		item.css("display", "block");
-		
+		item.bomba = false;
+		if(Math.random() < postotakMinusBodovi) {
+				item.css("border", "15px dotted red");
+				item.bomba = true;
+				animirano = true;
+		}
 		item.click(function() {
-			counter++;
-			item.css("display", "none");
-			$("#bodovi").html(counter);
+			if(item.bomba) {
+				
+				counter--;
+				$("#bodovi").html(counter);
+				
+			} else {
+				counter++;
+				item.css("display", "none");
+				$("#bodovi").html(counter);
+			}
 		});
 			
 		
@@ -97,6 +113,40 @@ function main(){
 			top: pos_Y, 
 			left: pos_X
 		});
+		
+		/*
+		item.hover(function() {
+			
+			if(Math.random() < postotakPomicanjaItem && !animirano) {
+				item.animate({
+					left: "+=300px"
+				}, 100);
+				animirano = true;
+			}	
+		});
+		
+		item.hover(function() {
+			
+			if(Math.random() < postotakPomicanjaItem && !animirano) {
+				item.animate({
+					top: "+=300px"
+				}, 100);
+				animirano = true;
+			}	
+		});
+		
+		item.hover(function() {
+			
+			if(Math.random() < postotakPomicanjaItem && !animirano) {
+				item.animate({
+					width: "60px",
+					height: "40px",
+					left: "-220px"
+				}, 100);
+				animirano = true;
+			}	
+		});
+		*/
 		function destroyObject() {
 			item.hide();
 		}
@@ -128,6 +178,6 @@ function main(){
 	}
 	
 	function randomStranica() {
-		return Math.floor(Math.random()*200)+10;
+		return Math.floor(Math.random()*200)+40;
 	}
 }
