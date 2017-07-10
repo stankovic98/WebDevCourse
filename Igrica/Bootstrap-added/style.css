@@ -54,6 +54,13 @@ body {
 	text-align: center;
 }
 
+#lista {
+  opacity: 0.7;
+  color: black;
+}
+#cancle {
+	margin-right: 40%;
+}
 
 
 
