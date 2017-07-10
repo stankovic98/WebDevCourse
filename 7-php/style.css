@@ -1,0 +1,21 @@
+
+body {
+  background: url("background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.container {
+    text-align: center ;
+    color: black;
+    margin-top:200px;
+}
+
+.form-group input {
+    text-align: center;
+    width: 400px;
+    position: relative;
+    left: 32%;
+    margin:20px 0;
+}
