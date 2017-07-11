@@ -1,3 +1,39 @@
+
+function getTopResults(htmlId) {
+	var htmlKod = '<div class="container col-md-5 center-block" id="listaE"><ul class="list-group  ">';
+	$.get("highscore.txt", function (data) {
+
+		var arr = data.split(",");
+		for (var i = 0; i < arr.length; i++) {
+			var podaci = arr[i].split("|");
+			htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + podaci[0] + '</span><span class="badge badge-default badge-pill">' + podaci[1] + '</span></li>';
+
+		}
+
+		htmlKod += '</ul></div>';
+		$(htmlId).html(htmlKod);
+	});
+}
+
+function sendData(user, pts) {
+
+	var myData = {
+		name: user,
+		bodovi: pts
+	};
+
+	$.ajax({
+		type: "POST",
+		url: "dataBase.php",
+		data: myData,
+		success: function (data) {
+			console.log("meseg sent");
+			console.log(data);
+			getTopResults("#top10");
+		}
+	});
+
+}
 function main() {
 	if ($("#name").val() == "") {
 		$("#mymodal").modal("toggle");
@@ -6,6 +42,7 @@ function main() {
 		});
 		return;
 	}
+
 	$("#pocetna").hide();
 	var user = $("#name").val()
 	$("#playerName").html(user);
@@ -13,10 +50,10 @@ function main() {
 	$(".progress-bar").width("100%");
 	var originalWidth = $(".progress-bar").width();
 
-	var trajanjeIgre = 20 * 1000;
+	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 0.5 * 1000;
 	var trajanjeItema = 2 * 1000;
-	var counter = 0;
+	var counter = 5;
 	var trajanjeIgreSEC = trajanjeIgre / 1000;
 	var vrijeme = trajanjeIgreSEC;
 	var igraTraje = true;
@@ -38,13 +75,9 @@ function main() {
 	function updateTime(interval) {
 		if (igraTraje) {
 
-
-
 			vrijeme--;
 			var postotak = Math.floor((vrijeme / trajanjeIgreSEC * 100));
 			progressBar(postotak, $('.progress-bar'), originalWidth);
-
-
 
 		}
 	}
@@ -165,6 +198,17 @@ function main() {
 		$("#modal").modal("show");
 		$("#score").html(counter);
 
+
+		sendData(user, counter);
+
+
+		/*
+		$.post('igrica.php', { name: 'antonio' }, function (returnedData) {
+			// do something here with the returnedData
+			console.log(returnedData);
+		});
+		*/
+
 	}
 
 	function progressBar(percent, $element, originalWidth) {
@@ -185,19 +229,13 @@ function main() {
 	function randomStranica() {
 		return Math.floor(Math.random() * 200) + 40;
 	}
-}sBarWidth }, 500);
-	}
+}
 
-	function getRandomColor() {
-		var letters = '0123456789ABCDEF';
-		var color = '#';
-		for (var i = 0; i < 6; i++) {
-			color += letters[Math.floor(Math.random() * 16)];
-		}
-		return color;
-	}
+$(document).ready(function () {
+	getTopResults("#pocetnaTop10");
 
-	function randomStranica() {
-		return Math.floor(Math.random() * 200) + 40;
-	}
+});
+
+function toggleHighscore() {
+	$("#pocetnaTop10").toggle();
 }
