@@ -11,5 +11,16 @@
     } else {
         header("Location: index.php");
     }
+    include ("header.php");
+?>
 
+<div class="container-fluid">
+
+    <textarea id="diary"></textarea>
+
+</div>
+
+
+<?php
+    include ("footer.php");
 ?>

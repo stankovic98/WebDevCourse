@@ -15,12 +15,7 @@
 
     if(array_key_exists("submit", $_POST)) {
 
-        $link = mysqli_connect("shareddb1d.hosting.stackcp.net", "projektDatabase-32317de9", "WbdxG4tRs9AB","projektDatabase-32317de9");
-
-        if(mysqli_connect_error()) {
-            die ("Database Connection Error");
-        }
-
+       include ("connection.php");
 
         
         if(!$_POST["email"]) {
@@ -96,33 +91,14 @@
 
 
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <style>
-
-        .container {
-            text-align: center;
-            width: 400px;
-        }
-
-    </style>
-  </head>
-  <body>
-
-    <div class="container">
+<?php include("header.php"); ?>
+    <div id="homeCon" class="container">
         <h1>Secret Diary</h1>
 
         <div id="error">
             <?php echo $error; ?>
         </div>
-        <form method="post">
+        <form id="signupForm" method="post">
             <div class="form-group">
                 <input type="email" class="form-control"name="email" placeholder="Your Email">
             </div>
@@ -140,8 +116,8 @@
                 <input type="submit" class="btn btn-success"name="submit" value="Sign Up!">
             </div>
         </form>
-
-        <form method="post">
+        
+        <form id="logInForm" method="post">
             
             <div class="form-group">
                 <input type="email" class="form-control"name="email" placeholder="Your Email">
@@ -158,12 +134,8 @@
                 <input type="submit" class="btn btn-success"name="submit" value="Log In">
             </div>
         </form>
+        <p><a id="showLogInForm">Log in</a></p>
     </div>
     
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
-</html>
+   <?php include ("footer.php"); ?>
