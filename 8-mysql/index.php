@@ -33,9 +33,9 @@
             $error = "<p>There were errors in your form: </p>".$error;
         } else {
           
-            if($_POST["singnUp"] == "1")    
+            if($_POST["signUp"] == "1")  {
         
-            $query = "SELECT id FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
+                $query = "SELECT id FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."' LIMIT 1";
 
                 $result = mysqli_query($link, $query);
 
@@ -64,6 +64,25 @@
 
                     
                 }
+            } else {
+                $query = "SELECT * FROM `users` WHERE email = '".mysqli_real_escape_string($link, $_POST['email'])."'";
+
+                $result = mysqli_query($link, $query);
+
+                $row = mysqli_fetch_array($result);
+
+                if(array_key_exists("id", $row)) {
+                    $hashedPassword = md5(md5($row['id']).$_POST['password']);
+
+                    if($hashedPassword == $row["password"]) {
+                        $_SESSION["id"] = $row["id"];
+                         if($_POST["stayLoggedIn"] == "1") {
+                            setcookie("id", $row["id"], time() + 60*60*24*356);
+                        }
+                        header("Location: loggedinpage.php");
+                    }
+                }
+            }
         }
     }
 
