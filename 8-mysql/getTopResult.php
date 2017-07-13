@@ -10,10 +10,9 @@
     $query = "SELECT * FROM highscore";
 
     $result = mysqli_query($link, $query); 
-    $i = 0;
-    while ($row = mysqli_fetch_assoc($result)) {
-       $highscores[$i] = $row;
-       $i++;
+    
+    for($i = 0; $i < 3; $i++) {
+       $highscores[$i] = mysqli_fetch_assoc($result);
     }
     
 

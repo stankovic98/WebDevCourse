@@ -5,32 +5,16 @@ function getTopResults(htmlId) {
 		type: "POST",
 		url: "getTopResult.php",
 		success: function (data) {
-			console.log("meseg sent");
 
 			var dataArr = JSON.parse(data);
-			console.dir(dataArr);
 			dataArr.forEach(function (element) {
-				console.log(element.name);
 				htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + element.name + '</span><span class="badge badge-default badge-pill">' + element.score + '</span></li>';
 			}, this);
 			htmlKod += '</ul></div>';
 			$(htmlId).html(htmlKod);
 		}
 	});
-	/*$.get("highscore.txt", function (data) {
 
-
-	var arr = data.split(",");
-	for (var i = 0; i < arr.length; i++) {
-		var podaci = arr[i].split("|");
-		htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + podaci[0] + '</span><span class="badge badge-default badge-pill">' + podaci[1] + '</span></li>';
-
-	}
-
-	htmlKod += '</ul></div>';
-	$(htmlId).html(htmlKod);
-
-});*/
 }
 
 function sendData(user, pts) {
