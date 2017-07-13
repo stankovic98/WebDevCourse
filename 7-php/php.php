@@ -11,11 +11,17 @@ if($_GET["city"]) {
     }
 
     $forecastPage = file_get_contents("http://www.weather-forecast.com/locations/".$_GET["city"]."/forecasts/latest");
-    
-   $pageArray = explode('3 Day Weather Forecast Summary:</b><span class="read-more-small"><span class="read-more-content"> <span class="phrase">', $forecastPage);
 
-    $secondPageArray = explode('</span></span></span></p>', $pageArray[1]);
-    $weather = $secondPageArray[0];
+    $dom = new DOMDocument();
+    $dom->loadXML($forecastPage);
+
+    $xmlPath = new DOMXPath($dom);
+    $arrNodes = $xmlPath->query('//span[@class="phrase"]');
+    var_dump($arrNodes[0]);
+  
+
+   
+    $weather = $arrNodes[0];
 }
 
 ?>

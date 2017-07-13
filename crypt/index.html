@@ -1,0 +1,170 @@
+<html>
+
+<head>
+
+	<title>Decrypt</title>
+	<meta charset="UTF-8">
+	<script src="script.js"></script>
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	 crossorigin="anonymous">
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+	 crossorigin="anonymous"></script>
+
+
+</head>
+
+<body onload="main()">
+
+	<div class="container">
+		<h1>Decrypter</h1>
+		<form>
+			<div id="allInputs">
+
+				<div class="form-group">
+					<label for="exampleInputEmail1">Input</label>
+					<textarea class="form-control" id="input" rows="3"></textarea>
+				</div>
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="a0">A</label>
+						<input type="text" class="form-control" id="a0" data-placeholder="a">
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="a1">B</label>
+						<input type="text" class="form-control" id="a1" data-placeholder="b">
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="a2">C</label>
+						<input type="text" class="form-control" id="a2" data-placeholder="c">
+					</div>
+
+					<div class="form-group col-md-3">
+						<label for="a3">D</label>
+						<input type="text" class="form-control" id="a3" data-placeholder="d">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="a4">E</label>
+						<input type="text" class="form-control" id="a4" data-placeholder="e">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a5">F</label>
+						<input type="text" class="form-control" id="a5" data-placeholder="f">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a6">G</label>
+						<input type="text" class="form-control" id="a6" data-placeholder="g">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a7">H</label>
+						<input type="text" class="form-control" id="a7" data-placeholder="h">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="a8">I</label>
+						<input type="text" class="form-control" id="a8" data-placeholder="i">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a9">J</label>
+						<input type="text" class="form-control" id="a9" data-placeholder="j">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a10">K</label>
+						<input type="text" class="form-control" id="a10" data-placeholder="k">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a11">L</label>
+						<input type="text" class="form-control" id="a11" data-placeholder="l">
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="a12">M</label>
+						<input type="text" class="form-control" id="a12" data-placeholder="m">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a13">N</label>
+						<input type="text" class="form-control" id="a13" data-placeholder="n">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a14">O</label>
+						<input type="text" class="form-control" id="a14" data-placeholder="o">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a15">P</label>
+						<input type="text" class="form-control" id="a15" data-placeholder="p">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="a16">Q</label>
+						<input type="text" class="form-control" id="a16" data-placeholder="q">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a17">R</label>
+						<input type="text" class="form-control" id="a17" data-placeholder="r">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a18">S</label>
+						<input type="text" class="form-control" id="a18" data-placeholder="s">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a19">T</label>
+						<input type="text" class="form-control" id="a19" data-placeholder="t">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-md-3">
+						<label for="a20">U</label>
+						<input type="text" class="form-control" id="a20" data-placeholder="u">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a21">V</label>
+						<input type="text" class="form-control" id="a21" data-placeholder="v">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a22">W</label>
+
+						<input type="text" class="form-control" id="a22" data-placeholder="w">
+					</div>
+					<div class="form-group col-md-3">
+						<label for="a23">X</label>
+						<input type="text" class="form-control" id="a23" data-placeholder="x">
+					</div>
+				</div>
+
+				<div class="form-group col-md-3">
+					<label for="a24">Y</label>
+					<input type="text" class="form-control" id="a24" data-placeholder="y">
+				</div>
+				<div class="form-group col-md-3">
+					<label for="a25">Z</label>
+					<input type="text" class="form-control" id="a25" data-placeholder="z">
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<label for="exampleTextarea">Output</label>
+				<textarea class="form-control" id="output" rows="3"></textarea>
+			</div>
+		</form>
+	</div>
+</body>
+
+</html>
