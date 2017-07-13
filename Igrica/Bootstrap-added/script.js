@@ -1,17 +1,20 @@
 
 function getTopResults(htmlId) {
 	var htmlKod = '<div class="container col-md-5 center-block" id="listaE"><ul class="list-group  ">';
+
 	$.ajax({
 		type: "POST",
 		url: "getTopResult.php",
 		success: function (data) {
-
+			console.dir(data);/*
 			var dataArr = JSON.parse(data);
+
 			dataArr.forEach(function (element) {
 				htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + element.name + '</span><span class="badge badge-default badge-pill">' + element.score + '</span></li>';
 			}, this);
+
 			htmlKod += '</ul></div>';
-			$(htmlId).html(htmlKod);
+			$(htmlId).html(htmlKod);*/
 		}
 	});
 
@@ -32,6 +35,13 @@ function sendData(user, pts) {
 			console.log("meseg sent");
 			console.log(data);
 			getTopResults("#top10");
+			$.bootstrapGrowl("You score is stored in database!", {
+				offset: { from: 'top', amount: 10 },
+				type: 'success',
+				align: 'right',
+				width: 'auto',
+				allow_dismiss: false
+			});
 		}
 	});
 
@@ -204,13 +214,7 @@ function main() {
 		sendData(user, counter);
 
 
-		$.bootstrapGrowl("You score is stored in database!", {
-			offset: { from: 'top', amount: 10 },
-			type: 'success',
-			align: 'right',
-			width: 'auto',
-			allow_dismiss: false
-		});
+
 
 
 		/*
