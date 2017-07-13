@@ -1,5 +1,5 @@
 <?php
-
+#moj
     session_start();
 
     $error = "";
@@ -9,7 +9,10 @@
         setcookie("id", "", time() - 60*60);
 
         $_COOKIE["id"] = "";
-    } else if(array_key_exists("id", $_SESSION) OR array_key_exists("id", $_COOKIE)){
+
+        session_destroy();
+
+    } else if((array_key_exists("id", $_SESSION) AND $_SESSION['id']) OR (array_key_exists("id", $_COOKIE) AND $_COOKIE['id'])){
         header("loggedinpage.php");
     }
 
@@ -45,16 +48,21 @@
                     if (!mysqli_query($link, $query)) {
                         $error = "Could not sing you up";
                     } else {
-                        $query = "UPDATE `users` SET password = '".md5(md5(mysqli_insert_id($link)).$_POST["password"]) ."' WHERE id = ".mysqli_insert_id($link);
-
+                        $insertId = mysqli_insert_id($link);
+                        #echo $insertId.".............";
+                        $query = "UPDATE `users` SET password = '".md5(md5($insertId).$_POST["password"])."' WHERE id = ".$insertId;
+            
                         mysqli_query($link, $query);
                         
-                        $_SESSION["id"] = mysqli_insert_id($link);
-
+                        $_SESSION['id'] = $insertId;
+                        #echo $insertId;
+                        #echo "..................sesija:".$_SESSION["id"]."gotva..................";
                         if($_POST["stayLoggedIn"] == "1") {
-                            setcookie("id", mysqli_insert_id($link), time() + 60*60*24*356);
+                            setcookie("id", $insertId, time() + 60*60*24*356);
+                            #echo $insertId.",,,,,,,,,,,";
                         }
                         header("Location: loggedinpage.php");
+                        #echo $insertId.".................";
                     }
 
                     
