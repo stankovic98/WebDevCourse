@@ -6,7 +6,7 @@ function getTopResults(htmlId) {
 		type: "POST",
 		url: "getTopResult.php",
 		success: function (data) {
-			console.dir(data);/*
+			console.dir(data);
 			var dataArr = JSON.parse(data);
 
 			dataArr.forEach(function (element) {
@@ -14,7 +14,7 @@ function getTopResults(htmlId) {
 			}, this);
 
 			htmlKod += '</ul></div>';
-			$(htmlId).html(htmlKod);*/
+			$(htmlId).html(htmlKod);
 		}
 	});
 

@@ -21,12 +21,14 @@
        $highscores[$i] = mysqli_fetch_array($result);
     }
     
-    
-    var_dump(bubbleSort($highscores, "score"));
-    
+    $highscores = bubbleSort($highscores, "score");
+
+    for($i = 0; $i < 3; $i++) {
+        $sortedHighscores[$i] = $highscores[$i];
+    }
 
 
-    echo json_encode($highscores);
+    echo json_encode($sortedHighscores);
 
     function bubbleSort(array $array, $key) {
         $array_size = count($array);
