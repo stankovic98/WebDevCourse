@@ -1,18 +1,20 @@
 
 function getTopResults(htmlId) {
 	var htmlKod = '<div class="container col-md-5 center-block" id="listaE"><ul class="list-group  ">';
-	$.get("highscore.txt", function (data) {
+	$.ajax({
+		type: "POST",
+		url: "getTopResult.php",
+		success: function (data) {
 
-		var arr = data.split(",");
-		for (var i = 0; i < arr.length; i++) {
-			var podaci = arr[i].split("|");
-			htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + podaci[0] + '</span><span class="badge badge-default badge-pill">' + podaci[1] + '</span></li>';
-
+			var dataArr = JSON.parse(data);
+			dataArr.forEach(function (element) {
+				htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + element.name + '</span><span class="badge badge-default badge-pill">' + element.score + '</span></li>';
+			}, this);
+			htmlKod += '</ul></div>';
+			$(htmlId).html(htmlKod);
 		}
-
-		htmlKod += '</ul></div>';
-		$(htmlId).html(htmlKod);
 	});
+
 }
 
 function sendData(user, pts) {
@@ -200,6 +202,15 @@ function main() {
 
 
 		sendData(user, counter);
+
+
+		$.bootstrapGrowl("You score is stored in database!", {
+			offset: { from: 'top', amount: 10 },
+			type: 'success',
+			align: 'right',
+			width: 'auto',
+			allow_dismiss: false
+		});
 
 
 		/*
