@@ -12,7 +12,6 @@ function getTopResults(htmlId) {
 			dataArr.forEach(function (element) {
 				htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + element.name + '</span><span class="badge badge-default badge-pill">' + element.score + '</span></li>';
 			}, this);
-
 			htmlKod += '</ul></div>';
 			$(htmlId).html(htmlKod);
 		}
@@ -65,7 +64,7 @@ function main() {
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 0.5 * 1000;
 	var trajanjeItema = 2 * 1000;
-	var counter = 5;
+	var counter = 12;
 	var trajanjeIgreSEC = trajanjeIgre / 1000;
 	var vrijeme = trajanjeIgreSEC;
 	var igraTraje = true;
