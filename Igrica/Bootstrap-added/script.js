@@ -253,3 +253,10 @@ $(document).ready(function () {
 function toggleHighscore() {
 	$("#pocetnaTop10").toggle();
 }
+
+function toggleLogin() {
+	$("#formaLogin").toggle();
+	$("#formaRegistre").toggle();
+	$("#login").text("Registre");
+	$("#registre").text("Login");
+}
