@@ -21,42 +21,7 @@
 
 <body >
 
-	<div id="pocetna">
-		<div class="jumbotron">
-			<h1 class="display-3">The Game</h1>
-			<p class="lead">Enter your name and start!</p>
-			<hr class="my-4">
-
-			<form class="form-inline d-flex justify-content-center">
-				<input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="name" placeholder="Name">
-			</form>
-			<p class="lead">
-				<a class="btn btn-primary btn-lg" href="#" role="button" onclick="main()">Start</a>
-				<a class="btn btn-primary btn-lg" href="#" role="button" onclick="toggleHighscore()">Highscore</a>
-			</p>
-			<div id="pocetnaTop10"></div>
-		</div>
-		<div class="modal fade" id="mymodal">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title">Alert!</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					  <span aria-hidden="true">&times;</span>
-					</button>
-					</div>
-					<div class="modal-body">
-						<p>Plese enter your name.</p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary" id="cancle">Cancle</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div id="igra">
+	<div id="igra" onload="main()">
 		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 
 

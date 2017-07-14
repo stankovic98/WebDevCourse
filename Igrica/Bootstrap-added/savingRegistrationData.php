@@ -1,5 +1,5 @@
 <?php
-
+    session_start();
     if(($_POST["email"] !=  "") && ($_POST["nickname"] != "") && ($_POST["password"] != "")) {
 
         if ($_POST["registration"]) {
@@ -13,18 +13,29 @@
 
             $result = mysqli_query($link, $query);
             if(mysqli_num_rows($result) > 0) {
-               echo "Email is already taken!";
+                $arr = array('message' => 'Email is already taken');
+                echo json_encode($arr);
             } else {
-                 $query = "INSERT INTO users (email, nickname, password) VALUES ('".$_POST["email"]."', '".$_POST["nickname"]."', '".$_POST["password"]."')";
+
+                $query = "INSERT INTO users (email, nickname, password) VALUES ('".$_POST["email"]."', '".$_POST["nickname"]."', '".$_POST["password"]."')";
 
                 mysqli_query($link, $query);
+
+                $_SESSION['email'] = $insertId;
+                
+
+                $arr = array('message' => '', 'location' => 'igrica.php');
+                echo json_encode($arr);
+
+                #header("Location: igrica.php");
             }
         } else {
             #login
         }
 
     } else {
-        echo "You have to enter all information!".$_POST["login"];
+        $arr = array('message' => 'You have to enter all information!');
+        echo json_encode($arr);
     }
 
 ?>

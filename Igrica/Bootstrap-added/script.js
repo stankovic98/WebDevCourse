@@ -280,15 +280,36 @@ function registre() {
 		url: "savingRegistrationData.php",
 		data: registrationData,
 		success: function (data) {
-			console.log("meseg sent");
-			console.log(data);
-			$.bootstrapGrowl("You have registred successfully!", {
-				offset: { from: 'top', amount: 10 },
-				type: 'success',
-				align: 'right',
-				width: 'auto',
-				allow_dismiss: false
-			});
+			var returnedData = JSON.parse(data);
+
+			console.log(returnedData.message);
+
+			if (returnedData.message == "") {
+				$.bootstrapGrowl("You have registred successfully!", {
+					offset: { from: 'top', amount: 10 },
+					type: 'success',
+					align: 'right',
+					width: 'auto',
+					allow_dismiss: false
+				});
+				window.location.href = returnedData.location;
+			} else if (returnedData.message == 'You have to enter all information!') {
+				$.bootstrapGrowl(returnedData.message, {
+					offset: { from: 'top', amount: 10 },
+					type: 'danger',
+					align: 'right',
+					width: 'auto',
+					allow_dismiss: false
+				});
+			} else {
+				$.bootstrapGrowl(returnedData.message, {
+					offset: { from: 'top', amount: 10 },
+					type: 'danger',
+					align: 'right',
+					width: 'auto',
+					allow_dismiss: false
+				});
+			}
 		}
 	});
 }
