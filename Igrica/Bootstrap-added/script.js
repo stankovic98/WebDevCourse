@@ -252,19 +252,28 @@ $(document).ready(function () {
 function toggleHighscore() {
 	$("#pocetnaTop10").toggle();
 }
-
+var registration = true;
 function toggleLogin() {
+
 	$("#formaLogin").toggle();
 	$("#formaRegistre").toggle();
-	$("#login").text("Registre");
-	$("#registre").text("Login");
+	if (registration) {
+		$("#login").text("Registre");
+		$("#registre").text("Login");
+		registration = false;
+	} else {
+		$("#login").text("Login");
+		$("#registre").text("Registre");
+		registration = true;
+	}
 }
 
 function registre() {
 	var registrationData = {
 		email: $("#email").val(),
 		nickname: $("#nickname").val(),
-		password: $("#password").val()
+		password: $("#password").val(),
+		registration: registration
 	};
 	$.ajax({
 		type: "POST",
