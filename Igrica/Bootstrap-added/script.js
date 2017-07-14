@@ -6,7 +6,6 @@ function getTopResults(htmlId) {
 		type: "POST",
 		url: "getTopResult.php",
 		success: function (data) {
-			console.dir(data);
 			var dataArr = JSON.parse(data);
 
 			dataArr.forEach(function (element) {
@@ -259,4 +258,28 @@ function toggleLogin() {
 	$("#formaRegistre").toggle();
 	$("#login").text("Registre");
 	$("#registre").text("Login");
+}
+
+function registre() {
+	var registrationData = {
+		email: $("#email").val(),
+		nickname: $("#nickname").val(),
+		password: $("#password").val()
+	};
+	$.ajax({
+		type: "POST",
+		url: "savingRegistrationData.php",
+		data: registrationData,
+		success: function (data) {
+			console.log("meseg sent");
+			console.log(data);
+			$.bootstrapGrowl("You have registred successfully!", {
+				offset: { from: 'top', amount: 10 },
+				type: 'success',
+				align: 'right',
+				width: 'auto',
+				allow_dismiss: false
+			});
+		}
+	});
 }
