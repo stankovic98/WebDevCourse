@@ -19,9 +19,9 @@
 
 </head>
 
-<body >
+<body onload="main()" >
 
-	<div id="igra" onload="main()">
+	<div id="igra" >
 		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
 
 

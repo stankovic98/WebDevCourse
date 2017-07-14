@@ -45,25 +45,26 @@ function sendData(user, pts) {
 
 }
 function main() {
-	if ($("#name").val() == "") {
-		$("#mymodal").modal("toggle");
-		$("#cancle").click(function () {
-			$("#mymodal").modal("toggle");
-		});
-		return;
-	}
 
-	$("#pocetna").hide();
-	var user = $("#name").val()
-	$("#playerName").html(user);
-	$("#igra").toggle();
+	var user = "";
+	$.ajax({
+		type: "POST",
+		url: "getNickname.php",
+		success: function (data) {
+			console.log(data);
+			user = data;
+			$("#playerName").html(user);
+		}
+	});
+
+
 	$(".progress-bar").width("100%");
 	var originalWidth = $(".progress-bar").width();
 
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 0.5 * 1000;
 	var trajanjeItema = 2 * 1000;
-	var counter = 12;
+	var counter = 12; //vrati na nulu
 	var trajanjeIgreSEC = trajanjeIgre / 1000;
 	var vrijeme = trajanjeIgreSEC;
 	var igraTraje = true;
@@ -245,13 +246,10 @@ function main() {
 }
 
 $(document).ready(function () {
-	getTopResults("#pocetnaTop10");
 
 });
 
-function toggleHighscore() {
-	$("#pocetnaTop10").toggle();
-}
+
 var registration = true;
 function toggleLogin() {
 
@@ -283,7 +281,7 @@ function registre() {
 			var returnedData = JSON.parse(data);
 
 			console.log(returnedData.message);
-
+			console.log(data);
 			if (returnedData.message == "") {
 				$.bootstrapGrowl("You have registred successfully!", {
 					offset: { from: 'top', amount: 10 },
@@ -293,7 +291,17 @@ function registre() {
 					allow_dismiss: false
 				});
 				window.location.href = returnedData.location;
+
 			} else if (returnedData.message == 'You have to enter all information!') {
+				$.bootstrapGrowl(returnedData.message, {
+					offset: { from: 'top', amount: 10 },
+					type: 'danger',
+					align: 'right',
+					width: 'auto',
+					allow_dismiss: false
+				});
+				console.log(data);
+			} else if (returnedData.message == 'That email/password do not exist') {
 				$.bootstrapGrowl(returnedData.message, {
 					offset: { from: 'top', amount: 10 },
 					type: 'danger',
