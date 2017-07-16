@@ -9,7 +9,7 @@ function getTopResults(htmlId) {
 			var dataArr = JSON.parse(data);
 
 			dataArr.forEach(function (element) {
-				htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + element.name + '</span><span class="badge badge-default badge-pill">' + element.score + '</span></li>';
+				htmlKod += '<li class="list-group-item justify-content-between" name="prvi" ><span>' + element.nickname + '</span><span class="badge badge-default badge-pill">' + element.score + '</span></li>';
 			}, this);
 			htmlKod += '</ul></div>';
 			$(htmlId).html(htmlKod);
@@ -64,7 +64,7 @@ function main() {
 	var trajanjeIgre = 5 * 1000;
 	var respawnItema = 0.5 * 1000;
 	var trajanjeItema = 2 * 1000;
-	var counter = 12; //vrati na nulu
+	var counter = 18; //vrati na nulu
 	var trajanjeIgreSEC = trajanjeIgre / 1000;
 	var vrijeme = trajanjeIgreSEC;
 	var igraTraje = true;
@@ -209,7 +209,7 @@ function main() {
 		$("#modal").modal("show");
 		$("#score").html(counter);
 
-
+		saveScore(counter);
 		sendData(user, counter);
 
 
@@ -318,6 +318,17 @@ function registre() {
 					allow_dismiss: false
 				});
 			}
+		}
+	});
+}
+
+function saveScore(num) {
+	$.ajax({
+		type: "POST",
+		url: "score.php",
+		data: { score: num },
+		success: function (data) {
+
 		}
 	});
 }

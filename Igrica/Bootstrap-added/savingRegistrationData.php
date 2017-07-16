@@ -1,6 +1,7 @@
 <?php
     session_start();
-    if((($_POST["email"] !=  "") && ($_POST["nickname"] != "") && ($_POST["password"] != ""))) {
+
+    if(($_POST["email"] !=  "") && ($_POST["nickname"] != "" || $_POST["registration"] == "false") && ($_POST["password"] != "")) {
 
         if ($_POST["registration"]) {
             $link = mysqli_connect("shareddb1d.hosting.stackcp.net", "usersForGame-323192f9", "a0P2zymR39rU","usersForGame-323192f9");
