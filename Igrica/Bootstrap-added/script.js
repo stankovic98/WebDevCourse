@@ -253,8 +253,8 @@ $(document).ready(function () {
 var registration = true;
 function toggleLogin() {
 
-	$("#formaLogin").toggle();
-	$("#formaRegistre").toggle();
+	$("#nickDiv").toggle();
+
 	if (registration) {
 		$("#login").text("Registre");
 		$("#registre").text("Login");

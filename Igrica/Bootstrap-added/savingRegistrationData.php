@@ -1,9 +1,13 @@
 <?php
     session_start();
-
+    
     if(($_POST["email"] !=  "") && ($_POST["nickname"] != "" || $_POST["registration"] == "false") && ($_POST["password"] != "")) {
+         $link = mysqli_connect("shareddb1d.hosting.stackcp.net", "usersForGame-323192f9", "a0P2zymR39rU","usersForGame-323192f9");
 
-        if ($_POST["registration"]) {
+            if(mysqli_connect_error()) {
+                die ("Database Connection Error");
+            }
+        if ($_POST["registration"] == "true") {
             $link = mysqli_connect("shareddb1d.hosting.stackcp.net", "usersForGame-323192f9", "a0P2zymR39rU","usersForGame-323192f9");
 
             if(mysqli_connect_error()) {
@@ -18,7 +22,7 @@
                 echo json_encode($arr);
             } else {
 
-                $query = "INSERT INTO users (email, nickname, password) VALUES ('".$_POST["email"]."', '".$_POST["nickname"]."', '".$_POST["password"]."')";
+                $query = "INSERT INTO users (email, nickname, password) VALUES ('".$_POST["email"]."', '".$_POST["nickname"]."', '".md5($_POST["password"])."')";
 
                 mysqli_query($link, $query);
               
@@ -30,9 +34,10 @@
                 #header("Location: igrica.php");
             }
         } else {
-            $query = "SELECT nickname FROM users WHERE email ='". $_POST['email']. "' AND password = '". $_POST['password']. "'";
 
-            if( mysqli_query($link, $query)) {
+            $query = "SELECT nickname FROM users WHERE email ='". $_POST['email']. "' AND password = '". md5($_POST['password']). "'";
+            $result = mysqli_query($link, $query);
+            if( mysqli_num_rows($result) > 0) {
                  $_SESSION['email'] = $_POST['email'];
                  $arr = array('message' => '', 'location' => 'igrica.php');
                  echo json_encode($arr);
