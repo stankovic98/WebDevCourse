@@ -12,9 +12,18 @@
         if (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
             $error .= "Invalid email format"; 
         }
-        echo $error;
+        if( $error != "") {
+            echo $error;
+            exit();
+        }
         if($_POST["loginActive"] == "0") {
 
+            $query = "SELECT * FROM users WHERE email = '". mysqli_real_escape_string($link, $_POST["email"]). "'";
+            $result = mysqli_query($link, $query);
+            if(mysqli_num_rows($result) > 0) {
+                $error = "That email address is already taken!";
+            }
+            echo $error;
         }
     }
 
