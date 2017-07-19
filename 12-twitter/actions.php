@@ -22,8 +22,21 @@
             $result = mysqli_query($link, $query);
             if(mysqli_num_rows($result) > 0) {
                 $error = "That email address is already taken!";
+            } else {
+
+                $query = "INSERT INTO users (email, password) VALUES ('". mysqli_real_escape_string($link, $_POST["email"])."', '". md5(mysqli_real_escape_string($link, $_POST["password"])). "') ";
+
+                if(mysqli_query($link, $query)) {
+                    echo "1";
+                } else {
+                    $error = "Couldn't create user, please try again later";
+                }
             }
+
+        }
+         if( $error != "") {
             echo $error;
+            exit();
         }
     }
 
