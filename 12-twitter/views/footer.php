@@ -23,6 +23,7 @@
         </button>
             </div>
             <div class="modal-body">
+              <div class="alert alert-danger" id="loginAlert"></div>
                 <form>
                     <input type="hidden" name="loginActive" id="loginActive" value="1" />
                     <div class="form-group">

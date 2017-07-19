@@ -1,7 +1,9 @@
 #toggleLogin {
     margin-right: 25px;
 }
-
+#loginAlert {
+    display: none;
+}
 
 /* Sticky footer styles
 -------------------------------------------------- */

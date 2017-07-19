@@ -18,7 +18,11 @@ $("#loginSignUpButton").click(function () {
         url: "actions.php/?action=loginSingUp",
         data: "email=" + $("#email").val() + "&password=" + $("#password").val() + "&loginActive=" + $("#loginActive").val(),
         success: function (result) {
-            alert(result);
+            if (result == "1") {
+                window.location.assign("http://antonio.stankovic.com.stackstaging.com/contents/12-twitter/");
+            } else {
+                $("#loginAlert").text(result).show();
+            }
         }
     });
 });
