@@ -33,7 +33,19 @@
                 }
             }
 
+        } else {
+            $query = "SELECT * FROM users WHERE email = '". mysqli_real_escape_string($link, $_POST["email"]). "'";
+            $result = mysqli_query($link, $query);
+            $row = mysqli_fetch_assoc($result);
+
+            if( $row["password"] == md5(mysqli_real_escape_string($link, $_POST["password"])) ) {
+                echo "1";
+            } else {
+                $error = "You entered wrong password";
+            }
+
         }
+
          if( $error != "") {
             echo $error;
             exit();
