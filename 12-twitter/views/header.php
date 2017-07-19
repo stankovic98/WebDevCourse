@@ -27,7 +27,10 @@
                 <a class="nav-link" href="?page=publicprofiles">Public Profiles</a>
             </li>
         </ul>
-        <div id="loginForma" class="form-inline">
+        <div id="loginForma" class="form-inline"><?php if($_SESSION["id"]) { ?>
+                  <a class="btn btn-success" href="?function=logout">Logout</a>
+        <?php } else { ?>
             <button class="btn btn-success" data-toggle="modal" data-target="#myModal"> Login/Sign Up</button>
+          <?php } ?>
         </div>
     </nav>

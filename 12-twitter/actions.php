@@ -26,6 +26,9 @@
 
                 if(mysqli_query($link, $query)) {
                     echo "1";
+
+                    $_SESSION["id"] = mysqli_insert_id($link);
+
                 } else {
                     $error = "Couldn't create user, please try again later";
                 }
@@ -38,6 +41,9 @@
 
             if( $row["password"] == md5(mysqli_real_escape_string($link, $_POST["password"])) ) {
                 echo "1";
+
+                $_SESSION["id"] = $row["id"];
+
             } else {
                 $error = "You entered wrong password";
             }
