@@ -11,3 +11,14 @@ $("#toggleLogin").click(function () {
         $("#toggleLogin").text("Sign Up");
     }
 });
+
+$("#loginSignUpButton").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "actions.php/?action=loginSingUp",
+        data: "email=" + $("#email").val() + "&password=" + $("#password").val() + "&loginActive=" + $("#loginActive").val(),
+        success: function (result) {
+            alert(result);
+        }
+    });
+});
