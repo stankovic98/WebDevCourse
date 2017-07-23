@@ -9,6 +9,9 @@
         <div class="col-4">
 
             <?php displaySearch(); ?>
+            <hr>
+            <?php displayTweetBox(); ?>
+
 
         </div>
     </div>

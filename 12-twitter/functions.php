@@ -65,9 +65,20 @@
 
     function displaySearch() {
         echo '<div class="form-inline">
-                <input type="text" class="form-control col-md-7" id="search" placeholder="Search">
+                <input type="text" class="form-control col-md-7 inputs" id="search" placeholder="Search">
 
                 <button  class="btn btn-primary">Search tweets</button>
             </div>';
+    }
+    
+    function displayTweetBox() {
+
+        if($_SESSION['id'] > 0) {
+            echo '<div class="form-inline" id="tweetbox">
+                    <textarea class="form-control col-md-7 inputs" id="tweetContent"> </textarea>
+
+                    <button  class="btn btn-primary">Post tweet</button>
+                </div>';
+        }
     }
 ?>

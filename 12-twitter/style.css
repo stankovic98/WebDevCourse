@@ -16,9 +16,13 @@
   padding: 5px;
   margin: 5px;
 }
-#search {
+.inputs {
   margin-right: 5px;
 }
+#tweetbox {
+  margin-top: 10px;
+}
+
 
 
 
