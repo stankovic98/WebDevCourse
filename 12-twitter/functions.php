@@ -62,4 +62,12 @@
             }
         }
     }
+
+    function displaySearch() {
+        echo '<div class="form-inline">
+                <input type="text" class="form-control col-md-7" id="search" placeholder="Search">
+
+                <button  class="btn btn-primary">Search tweets</button>
+            </div>';
+    }
 ?>

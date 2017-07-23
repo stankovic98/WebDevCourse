@@ -6,6 +6,10 @@
             <?php displayTweets('public'); ?>
         
         </div>
-        <div class="col-4">col-4</div>
+        <div class="col-4">
+
+            <?php displaySearch(); ?>
+
+        </div>
     </div>
 </div>
