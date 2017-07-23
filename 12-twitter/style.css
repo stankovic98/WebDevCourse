@@ -4,6 +4,11 @@
 #loginAlert {
     display: none;
 }
+.mainContainer {
+  padding: 20px;
+}
+
+
 
 /* Sticky footer styles
 -------------------------------------------------- */
