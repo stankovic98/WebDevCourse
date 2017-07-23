@@ -58,7 +58,7 @@
 
                echo "<p>".$row['tweet']."</p>";
 
-               echo "<p>Follow</p></div>";
+               echo "<p><a href='' class='toggleFollow' data-userId='". $row['userid']. "'>Follow</a></p></div>";
             }
         }
     }
@@ -75,7 +75,7 @@
 
         if($_SESSION['id'] > 0) {
             echo '<div class="form-inline" id="tweetbox">
-                    <textarea class="form-control col-md-7 inputs" id="tweetContent"> </textarea>
+                    <textarea class="form-control" id="tweetContent"> </textarea>
 
                     <button  class="btn btn-primary">Post tweet</button>
                 </div>';

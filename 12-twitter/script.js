@@ -26,3 +26,14 @@ $("#loginSignUpButton").click(function () {
         }
     });
 });
+
+$(".toggleFollow").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "actions.php/?action=toggleFollow",
+        data: "userid=" + $(this).data("userid"),
+        success: function (result) {
+            alert(result);
+        }
+    });
+});

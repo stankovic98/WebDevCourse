@@ -56,4 +56,7 @@
         }
     }
 
+    if($_GET["action"] == "toggleFollow") {
+        print_r($_POST);
+    }
 ?>
