@@ -97,10 +97,11 @@
     function displayTweetBox() {
 
         if($_SESSION['id'] > 0) {
-            echo '<div class="form-inline" id="tweetbox">
+            echo '<div id="tweetSuccess" class="alert alert-success">Your tweet was posted successfully.</div>
+            <div id="tweetFail" class="alert alert-danger"></div><div class="form-inline" id="tweetbox">
                     <textarea class="form-control" id="tweetContent"> </textarea>
 
-                    <button  class="btn btn-primary">Post tweet</button>
+                    <button id="postTweetButton" class="btn btn-primary">Post tweet</button>
                 </div>';
         }
     }

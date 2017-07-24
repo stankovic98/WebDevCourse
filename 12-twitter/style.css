@@ -27,7 +27,12 @@
   height: 80px;
   margin-bottom: 5px;
 }
-
+#tweetSuccess {
+  display: none;
+}
+#tweetFail {
+  display: none;
+}
 
 
 

@@ -70,4 +70,16 @@
                 echo "2";
             }
     }
+
+    if($_GET["action"] == "postTweet") {
+        if($_POST['tweetContent'] == "") {
+            echo "Your tweet is empty";
+        } else if (strlen($_POST["tweetContents"]) > 140) {
+            echo "your tweet is too long";
+        } else {
+            mysqli_query($link, "INSERT INTO tweets (tweet, userid, datetime) VALUES ('". mysqli_real_escape_string($link, $_POST["tweetContent"]). "', ". mysqli_real_escape_string($link, $_SESSION["id"]).", NOW())");
+
+           echo "1";
+        }
+    }
 ?>
