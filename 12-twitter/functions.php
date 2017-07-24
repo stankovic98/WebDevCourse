@@ -56,6 +56,11 @@
             }
         } else if( $type == "yourtweets") {
             $whereClause = " WHERE userid=". mysqli_real_escape_string($link, $_SESSION['id']);
+        } else if( $type == "search") {
+
+            echo "<p>Showing result for ". mysqli_real_escape_string($link, $_GET['q']) .": </p>";
+            $whereClause = " WHERE tweet LIKE '%". mysqli_real_escape_string($link, $_GET['q']) ."%' ";
+            
         }
 
         $query = "SELECT * FROM tweets ". $whereClause ." ORDER BY `datetime` DESC LIMIT 10";
@@ -89,11 +94,12 @@
     }
 
     function displaySearch() {
-        echo '<div class="form-inline">
-                <input type="text" class="form-control col-md-7 inputs" id="search" placeholder="Search">
+        echo '<form class="form-inline">
+                <input type="hidden" name="page" value="search">
+                <input type="text" name="q" class="form-control col-md-7 inputs" id="search" placeholder="Search">
 
-                <button  class="btn btn-primary">Search tweets</button>
-            </div>';
+                <button type="submit" class="btn btn-primary">Search tweets</button>
+            </form>';
     }
     
     function displayTweetBox() {
