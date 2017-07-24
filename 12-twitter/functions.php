@@ -60,7 +60,15 @@
 
             echo "<p>Showing result for ". mysqli_real_escape_string($link, $_GET['q']) .": </p>";
             $whereClause = " WHERE tweet LIKE '%". mysqli_real_escape_string($link, $_GET['q']) ."%' ";
-            
+
+        } else if(is_numeric($type)) {
+            $userQuery = "SELECT * FROM users WHERE id = ". mysqli_real_escape_string($link, $type) ." LIMIT 1";
+            $userQueryResult = mysqli_query($link, $userQuery);
+            $user = mysqli_fetch_assoc($userQueryResult);
+
+            echo "<h2>". mysqli_real_escape_string($link, $user['email']) . "'s Tweets</h2>";
+
+            $whereClause = " WHERE userid= ". mysqli_real_escape_string($link, $type); 
         }
 
         $query = "SELECT * FROM tweets ". $whereClause ." ORDER BY `datetime` DESC LIMIT 10";
@@ -74,7 +82,7 @@
                 $userQueryResult = mysqli_query($link, $userQuery);
                 $user = mysqli_fetch_assoc($userQueryResult);
 
-                echo "<div class='tweet'><p>". $user['email']." <span class='time'>". time_since(time() - strtotime($row['datetime'])) ." ago</span></p>";
+                echo "<div class='tweet'><p><a href='?page=publicprofiles&userid=".$user['id']."'>". $user['email']."</a> <span class='time'>". time_since(time() - strtotime($row['datetime'])) ." ago</span></p>";
 
                echo "<p>".$row['tweet']."</p>";
 
@@ -111,6 +119,22 @@
 
                     <button id="postTweetButton" class="btn btn-primary">Post tweet</button>
                 </div>';
+        }
+    }
+
+    function displayUsers() {
+
+        global $link;
+
+        $query = "SELECT * FROM users LIMIT 10";
+        $result = mysqli_query($link, $query);
+
+        if (mysqli_num_rows($result) == 0 ) {
+            echo "There are no result";
+        } else {
+            while($row = mysqli_fetch_assoc($result) ) { 
+                echo "<p><a href='?page=publicprofiles&userid=".$row['id']."'>". $row['email'] ."</a></p>";
+            }
         }
     }
 ?>

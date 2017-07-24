@@ -57,6 +57,7 @@
     }
 
     if($_GET["action"] == "toggleFollow") {
+       
        $query = "SELECT * FROM isFollowing WHERE follower = ". mysqli_real_escape_string($link, $_SESSION["id"]). " AND isFollowing = ". mysqli_real_escape_string($link, $_POST["userid"]);
         $result = mysqli_query($link, $query);
 
