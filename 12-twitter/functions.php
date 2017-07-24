@@ -54,6 +54,8 @@
                 }
                 $whereClause .= " userid=". $row['isFollowing']." ";
             }
+        } else if( $type == "yourtweets") {
+            $whereClause = " WHERE userid=". mysqli_real_escape_string($link, $_SESSION['id']);
         }
 
         $query = "SELECT * FROM tweets ". $whereClause ." ORDER BY `datetime` DESC LIMIT 10";
