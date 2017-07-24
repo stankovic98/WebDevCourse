@@ -41,6 +41,19 @@
 
         if($type == 'public') {
             $whereClause = '';
+        } else if ($type == 'isFollowing') {
+            $query = "SELECT * FROM isFollowing WHERE follower = ". mysqli_real_escape_string($link, $_SESSION["id"]);
+            $result = mysqli_query($link, $query);
+
+            $whereClause = "";
+            while( $row = mysqli_fetch_assoc($result) ) {
+                if($whereClause == '') {
+                    $whereClause = "WHERE ";
+                } else {
+                    $whereClause .= " OR ";
+                }
+                $whereClause .= " userid=". $row['isFollowing']." ";
+            }
         }
 
         $query = "SELECT * FROM tweets ". $whereClause ." ORDER BY `datetime` DESC LIMIT 10";
@@ -58,7 +71,17 @@
 
                echo "<p>".$row['tweet']."</p>";
 
-               echo "<p><a href='#' class='toggleFollow' data-userid='". $row['userid']. "'>Follow</a></p></div>";
+               echo "<p><a href='#' class='toggleFollow' data-userid='". $row['userid']. "'>";
+               
+                $isFollowingQuery = "SELECT * FROM isFollowing WHERE follower = ". mysqli_real_escape_string($link, $_SESSION["id"]). " AND isFollowing = ". mysqli_real_escape_string($link, $row["userid"]);
+                $isFollowingResult = mysqli_query($link, $isFollowingQuery);
+                if( mysqli_num_rows($isFollowingResult) > 0){
+                    echo "Unfollow";
+                } else {
+                    echo "Follow";
+                }
+
+               echo "</a></p></div>";
             }
         }
     }

@@ -34,7 +34,6 @@ $(".toggleFollow").click(function () {
         url: "actions.php/?action=toggleFollow",
         data: "userid=" + id,
         success: function (result) {
-            alert(result);
             if (result == "1") {
 
                 $("a[data-userid='" + id + "']").text("Follow");
