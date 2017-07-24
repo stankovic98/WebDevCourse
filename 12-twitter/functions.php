@@ -58,7 +58,7 @@
 
                echo "<p>".$row['tweet']."</p>";
 
-               echo "<p><a href='' class='toggleFollow' data-userId='". $row['userid']. "'>Follow</a></p></div>";
+               echo "<p><a href='#' class='toggleFollow' data-userid='". $row['userid']. "'>Follow</a></p></div>";
             }
         }
     }

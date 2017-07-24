@@ -28,12 +28,22 @@ $("#loginSignUpButton").click(function () {
 });
 
 $(".toggleFollow").click(function () {
+    var id = $(this).data("userid");
     $.ajax({
         type: "POST",
         url: "actions.php/?action=toggleFollow",
-        data: "userid=" + $(this).data("userid"),
+        data: "userid=" + id,
         success: function (result) {
             alert(result);
+            if (result == "1") {
+
+                $("a[data-userid='" + id + "']").text("Follow");
+
+            } else if (result == "2") {
+
+                $("a[data-userid='" + id + "']").text("Unfollow");
+
+            }
         }
     });
 });
